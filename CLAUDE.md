@@ -22,6 +22,8 @@ mi-lista-tareas/
 ├── src/
 │   ├── main.jsx          # Punto de entrada, configura BrowserRouter
 │   ├── App.jsx           # Rutas principales
+│   ├── components/
+│   │   └── TaskForm.jsx  # Formulario para crear tareas
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   ├── Login.jsx     # Login con Magic Link
@@ -29,6 +31,10 @@ mi-lista-tareas/
 │   └── supabase/
 │       └── client.jsx    # Cliente de Supabase
 ```
+
+## Base de datos (Supabase)
+- Tabla `Tasks` con columnas: id, created_at, Name, done (boolean), userid
+- RLS desactivado temporalmente para desarrollo
 
 ## Notas importantes
 - El proyecto está en `mi-lista-tareas/` (NO en la carpeta raíz)
@@ -39,4 +45,9 @@ mi-lista-tareas/
 - [x] Configuración de Supabase
 - [x] Login con Magic Link
 - [x] React Router configurado
-- [ ] (próximos pasos...)
+- [x] Componente TaskForm para crear tareas
+- [x] Inserción de tareas en Supabase con userid
+- [ ] Mostrar lista de tareas (SELECT)
+- [ ] Marcar tareas como completadas (UPDATE)
+- [ ] Eliminar tareas (DELETE)
+- [ ] Reactivar RLS con políticas apropiadas
