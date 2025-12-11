@@ -5,7 +5,9 @@ function TaskForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       const result = await supabase.from("Tasks").insert({
         Name: taskName,
         userid: user.id,
@@ -13,7 +15,6 @@ function TaskForm() {
       console.log(result);
     } catch (error) {
       console.error(error);
-      
     }
   };
   return (

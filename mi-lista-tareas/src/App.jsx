@@ -5,10 +5,12 @@ import NotFound from "./pages/NotFound";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { supabase } from "./supabase/client";
 import { useEffect } from "react";
+import { TaskContextProvider } from "./context/TaskContext";
 function App() {
   const navigate = useNavigate();
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const {data: { subscription }
+    } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_OUT") {
         navigate("/login");
       }
@@ -22,12 +24,14 @@ function App() {
   }, [navigate]);
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-          </div>
+      <TaskContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </TaskContextProvider>
+    </div>
   );
 }
 

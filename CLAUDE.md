@@ -21,9 +21,12 @@ Lista de tareas con React + Supabase. Proyecto de aprendizaje.
 mi-lista-tareas/
 ├── src/
 │   ├── main.jsx          # Punto de entrada, configura BrowserRouter
-│   ├── App.jsx           # Rutas principales
+│   ├── App.jsx           # Rutas principales, envuelve con TaskContextProvider
 │   ├── components/
-│   │   └── TaskForm.jsx  # Formulario para crear tareas
+│   │   ├── TaskForm.jsx  # Formulario para crear tareas
+│   │   └── TaskList.jsx  # Lista de tareas del usuario
+│   ├── context/
+│   │   └── TaskContext.jsx  # Context API para estado global de tareas
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   ├── Login.jsx     # Login con Magic Link
@@ -47,7 +50,15 @@ mi-lista-tareas/
 - [x] React Router configurado
 - [x] Componente TaskForm para crear tareas
 - [x] Inserción de tareas en Supabase con userid
-- [ ] Mostrar lista de tareas (SELECT)
+- [x] Context API para manejo de estado (TaskContext)
+- [x] Componente TaskList conectado al contexto
+- [x] Query de tareas filtradas por usuario (SELECT con .eq)
+- [ ] Renderizar lista de tareas en la UI
 - [ ] Marcar tareas como completadas (UPDATE)
 - [ ] Eliminar tareas (DELETE)
 - [ ] Reactivar RLS con políticas apropiadas
+
+## Última sesión: 11 de diciembre de 2025
+- Creación de TaskContext.jsx con Context API
+- Creación de TaskList.jsx
+- Corrección de errores: await, desestructuración, nombres de tablas

@@ -2,11 +2,15 @@ import { supabase } from "../supabase/client";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TaskForm from "../components/TaskForm";
+import Tasklist from "../components/TaskList";
+
 function Home() {
   const navigate = useNavigate();
   useEffect(() => {
     const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (!session) {
         navigate("/login");
       }
@@ -17,7 +21,8 @@ function Home() {
     <div>
       <h1>Home</h1>
       <button onClick={() => supabase.auth.signOut()}>Logout</button>
-      <TaskForm/>
+      <TaskForm />
+      <Tasklist></Tasklist>
     </div>
   );
 }
