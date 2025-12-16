@@ -6,10 +6,12 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { supabase } from "./supabase/client";
 import { useEffect } from "react";
 import { TaskContextProvider } from "./context/TaskContext";
+import Navbar from "./components/navbar";
 function App() {
   const navigate = useNavigate();
   useEffect(() => {
-    const {data: { subscription }
+    const {
+      data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_OUT") {
         navigate("/login");
@@ -25,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <TaskContextProvider>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
